@@ -1,22 +1,15 @@
 import express from 'express';
+import { getTweets} from '../../controllers/tweetController.js'; // Assuming you have a tweet controller
+import { getTweetById } from '../../controllers/tweetController.js';
 
 const router=express.Router();
 
 
-router.get('', (req, res) => {
-    
-    res.json({
-        message: 'Welcome to the Tweet API V1'
-    });
-});
+router.get('/',getTweets);
+router.get('/:id', getTweetById);
 
-router.get('/:id', (req, res) => {
-    const tweetId = req.params.id;
-    // Here you would typically fetch the tweet from a database
-    res.json({
-        message: `Fetching tweet with ID V1: ${tweetId}`
-    });
-});
+// router.post('/',createTweet);
+
 
 
 
